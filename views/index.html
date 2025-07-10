@@ -1,0 +1,97 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>DevBurger - Página Inicial</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 40px;
+      background-color: #f5f5f5;
+    }
+
+    p{
+        display: flex;
+        justify-content: center;
+    }
+
+    h1 {
+      color: #cc0000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    form {
+      background-color: white;
+      padding: 20px;
+      border-radius: 8px;
+      width: 300px;
+      margin: auto;
+    }
+
+    label {
+      display: block;
+      margin-top: 10px;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 6px;
+      margin-top: 4px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      margin-top: 15px;
+      background-color: #cc0000;
+      color: white;
+      border: none;
+      padding: 10px;
+      width: 100%;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+
+    
+    a {
+   
+        display: flex;
+        justify-content: center;
+    
+      margin-top: 20px;
+      color: #cc0000;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Bem-vindo à DevBurger 🍔</h1>
+  <p>Confira nosso cardápio e envie sugestões de novos lanches!</p>
+
+  <!-- Formulário que envia via query string para /sugestao -->
+  <form action="/sugestao" method="GET">
+    <label for="nome">Nome do Lanche:</label>
+    <input type="text" id="nome" name="nome" required>
+
+    <label for="ingredientes">Ingredientes:</label>
+    <textarea id="ingredientes" name="ingredientes" rows="4" required></textarea>
+
+    <button type="submit">Enviar Sugestão</button>
+  </form>
+
+  <!-- Links obrigatórios -->
+  
+    <a href="/contato">Contato</a> 
+  <a href="/api/lanches" target="_blank">Ver cardápio Lanches</a>
+  
+</body>
+</html>

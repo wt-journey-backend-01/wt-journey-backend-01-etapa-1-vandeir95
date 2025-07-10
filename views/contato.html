@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Contato - DevBurger</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 40px;
+      background-color: #f9f9f9;
+    }
+
+    h1 {
+      color: #cc0000;
+      display: flex;
+      justify-content: center;
+    }
+
+    form {
+      
+        margin: auto;
+
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      max-width: 400px;
+    }
+
+    label {
+      display: block;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 6px;
+      margin-top: 4px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      margin-top: 15px;
+      background-color: #cc0000;
+      color: white;
+      border: none;
+      padding: 10px;
+      width: 100%;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    a {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+      color: #cc0000;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Entre em Contato</h1>
+
+  <form action="/contato" method="POST" id="contatoForm">
+    <label for="nome">Nome:</label>
+    <input type="text" id="nome" name="nome" required>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required>
+
+    <label for="assunto">Assunto:</label>
+    <input type="text" id="assunto" name="assunto" required>
+
+    <label for="mensagem">Mensagem:</label>
+    <textarea id="mensagem" name="mensagem" rows="5" required></textarea>
+
+    <button type="submit">Enviar Mensagem</button>
+  </form>
+
+  <!-- Link para a página inicial -->
+  <a href="/">Voltar para a Página Inicial</a>
+
+
+  <script>
+   const form = document.getElementById('contatoForm');
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault(); // evita envio padrão
+
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData.entries());
+
+    fetch('/contato', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+    })
+    .then(res => res.json())
+    .then(responseData => {
+      alert(`Obrigado pelo contato, ${responseData.dados.nome}!`);
+      form.reset();
+    })
+    .catch(() => {
+      alert('Erro ao enviar formulário. Tente novamente.');
+    });
+  });
+
+  </script>
+
+</body>
+</html>
